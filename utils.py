@@ -15,6 +15,7 @@ def index_to_num(ind):
 def primes_below(num):
     """Implement Sieve of Eratosthenes to find a list of primes below NUM"""
     sqrt_num = int(np.ceil(np.sqrt(num)))
+    # Only consider odd numbers for space saving
     if num % 2 == 0:
         array_size = int(num / 2 - 1)
     else:
@@ -24,7 +25,7 @@ def primes_below(num):
     while True:
         if current_prime >= sqrt_num:
             break
-        # p = current_prime**2
+        # Start at current_prime**2 for significant time savings
         p = current_prime**2
         while p < num:
             if p % 2 != 0:
