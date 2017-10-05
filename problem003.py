@@ -8,9 +8,7 @@ import utils
 
 
 def problem003():
-    """ Implement Sieve of Eratosthenes"""
     num = 600851475143
-    # only need to check up to sqrt of num.... big savings on memory
     primes = utils.primes_below(int(np.ceil(np.sqrt(num))))
     remainder = num
     prime_factors = []
