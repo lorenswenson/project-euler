@@ -57,7 +57,7 @@ data_string = """
 """
 
 data = pd.read_csv(io.StringIO(data_string), sep=r'\s+',
-                   header=None, dtype=np.float).values
+                   header=None, dtype=np.int).values
 
 
 class Problem:
