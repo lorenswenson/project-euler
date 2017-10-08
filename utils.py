@@ -1,14 +1,17 @@
 
+import functools
 import numpy as np
 
 
 def num_to_index(p):
-    """Array represents odd numbers starting from 3.  Find index corresponding to odd p."""
+    """Array represents odd numbers starting from 3.  
+Find index corresponding to odd p."""
     return int((p - 1) / 2 - 1)
 
 
 def index_to_num(ind):
-    """Find the corresponding prime for an index into an array of odd numbers starting from 3."""
+    """Find the corresponding prime for an index into 
+an array of odd numbers starting from 3."""
     return int((ind + 1) * 2 + 1)
 
 
@@ -40,3 +43,20 @@ def primes_below(num):
         current_prime = index_to_num(ind)
 
     return np.array([index_to_num(n) for n in np.nditer(np.nonzero(touched == 0)[0])])
+
+
+def find_factors(num):
+    """Finds all factors of num (including 1 and num).  Only needs 
+to check up to sqrt(num) as the matching factor will be above this number."""
+    factors = []
+    for n in range(1, int(np.round(np.sqrt(num))) + 1):
+        if num % n == 0:
+            factors.append(n)
+            if num / n != n:
+                factors.append(int(num / n))
+    return factors
+
+
+def get_triangle_number(num):
+    """Calculate 1+2+...+num"""
+    return functools.reduce(lambda x, y: x + y, range(num + 1))
